@@ -23,6 +23,12 @@ services:
     volumes:
       - /dev/net:/dev/net:z
       - ./openvpn:/vpn
+    healthcheck:
+      test: 'curl -L http://httpbin.org/ip'
+      interval: 20s
+      timeout: 10s
+      start_period: 30s
+      retries: 1
 
   rutorrent:
     image: linuxserver/rutorrent
@@ -37,6 +43,20 @@ services:
       - ./seedbox/config:/config
       - ./seedbox/downloads:/downloads
     restart: unless-stopped
+    healthcheck:
+      test: 'curl http://localhost'
+      interval: 20s
+      timeout: 5s
+      start_period: 30s
+      retries: 1
+  
+  autoheal:
+    image: willfarrell/autoheal
+    environment:
+      AUTOHEAL_CONTAINER_LABEL: 'all'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
 
 networks:
   default:
