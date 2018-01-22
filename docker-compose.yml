@@ -37,12 +37,6 @@ services:
       - ./seedbox/config:/config
       - ./seedbox/downloads:/downloads
     restart: unless-stopped
-    healthcheck:
-      test: 'curl -f http://localhost | grep theWebUI'
-      interval: 1m
-      timeout: 2s
-      retries: 2
-      start_period: 10s
 
 networks:
   default:
