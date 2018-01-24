@@ -24,9 +24,9 @@ services:
       - /dev/net:/dev/net:z
       - ./openvpn:/vpn
     healthcheck:
-      test: 'curl -L http://httpbin.org/ip'
+      test: 'curl -sL http://httpbin.org/ip'
       interval: 20s
-      timeout: 10s
+      timeout: 5s
       start_period: 30s
       retries: 1
 
@@ -44,9 +44,9 @@ services:
       - ./seedbox/downloads:/downloads
     restart: unless-stopped
     healthcheck:
-      test: 'curl http://localhost'
-      interval: 20s
-      timeout: 5s
+      test: 'curl -s http://localhost'
+      interval: 10s
+      timeout: 1s
       start_period: 30s
       retries: 1
   
