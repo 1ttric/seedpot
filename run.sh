@@ -11,5 +11,5 @@ if [[ -z $(which docker-compose) ]]; then
     install_compose
 fi
 
-sudo docker-compose rm -f
+sudo docker-compose down -t 0
 sudo docker-compose up -d

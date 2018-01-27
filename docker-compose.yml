@@ -21,7 +21,7 @@ services:
     tty: true
     volumes:
       - '/dev/net:/dev/net:z'
-      - './openvpn:/vpn'
+      - './openvpn:/vpn:ro'
     healthcheck:
       test: 'curl -sL http://httpbin.org/ip'
       interval: 20s
