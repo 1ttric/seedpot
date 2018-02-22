@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cd "${0%/*}"
 
 function pprint {
@@ -17,28 +19,13 @@ function ensure_basicauth {
     sudo apt -yqq install apache2-utils
     mkdir -p ./nginx/htpasswd/
     if [ ! -f ./nginx/htpasswd/.htpasswd_rutorrent ]; then
-        pprint "Setting up rutorrent credentials"
+        pprint "Setting up credentials"
         echo -n "New username: "
         read user
         sudo htpasswd -c ./nginx/htpasswd/.htpasswd_rutorrent $user
-    fi
-    if [ ! -f ./nginx/htpasswd/.htpasswd_jackett ]; then
-        pprint "Setting up jackett credentials"
-        echo -n "New username "
-        read user
-        sudo htpasswd -c ./nginx/htpasswd/.htpasswd_jackett $user
-    fi
-    if [ ! -f ./nginx/htpasswd/.htpasswd_sonarr ]; then
-        pprint "Setting up sonarr credentials"
-        echo -n "New username "
-        read user
-        sudo htpasswd -c ./nginx/htpasswd/.htpasswd_sonarr $user
-    fi
-    if [ ! -f ./nginx/htpasswd/.htpasswd_radarr ]; then
-        pprint "Setting up radarr credentials"
-        echo -n "New username "
-        read user
-        sudo htpasswd -c ./nginx/htpasswd/.htpasswd_radarr $user
+        sudo cp ./nginx/htpasswd/.htpasswd_rutorrent ./nginx/htpasswd/.htpasswd_jackett
+        sudo cp ./nginx/htpasswd/.htpasswd_rutorrent ./nginx/htpasswd/.htpasswd_sonarr
+        sudo cp ./nginx/htpasswd/.htpasswd_rutorrent ./nginx/htpasswd/.htpasswd_radarr
     fi
 }
 
