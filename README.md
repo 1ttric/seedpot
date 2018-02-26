@@ -22,6 +22,10 @@ Any paths in these configs (crl-verify, auth-user-pass, etc) should refer to `/v
 
 `./run.sh` - it's that simple.
 
+### errors
+
+If errors occur, `docker-compose logs` will show container-wide messages, and the application config subdirectories also contain logfiles
+
 ## software
 
 Seedpot comes with rtorrent with rutorrent ui, sonarr, radarr, and jackett
