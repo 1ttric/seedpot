@@ -18,6 +18,8 @@ Your VPN provider's .ovpn configs/certs/secrets should go in the ./openvpn folde
 
 Any paths in these configs (crl-verify, auth-user-pass, etc) should refer to `/vpn`, as that is where the internal openvpn container mount is located
 
+Only one .ovpn config should be included, as the container will attempt to negotiate a connection with each config it finds
+
 ## running
 
 `./run.sh` - it's that simple.
