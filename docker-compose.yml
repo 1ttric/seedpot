@@ -47,8 +47,8 @@ services:
       PUID: ${PUID}
     network_mode: service:openvpn
     volumes:
-      - ./rutorrent/config:/config
-      - ./rutorrent/downloads:/downloads
+      - ${RUTORRENT_CONFIG}:/config
+      - ${RUTORRENT_DOWNLOADS}:/downloads
 
   jackett:
     image: linuxserver/jackett
@@ -60,8 +60,8 @@ services:
       PUID: ${PUID}
     network_mode: service:openvpn
     volumes:
-      - ./jackett/config:/config
-      - ./jackett/downloads:/downloads
+      - ${JACKETT_CONFIG}:/config
+      - ${JACKETT_DOWNLOADS}:/downloads
 
   radarr:
     image: linuxserver/radarr
@@ -73,9 +73,9 @@ services:
       PUID: ${PUID}
     network_mode: service:openvpn
     volumes:
-      - ./radarr/config:/config
-      - ./radarr/downloads:/downloads
-      - ./radarr/movies:/movies
+      - ${RADARR_CONFIG}:/config
+      - ${RADARR_DOWNLOADS}:/downloads
+      - ${RADARR_MOVIES}:/movies
 
   sonarr:
     image: linuxserver/sonarr
@@ -87,9 +87,9 @@ services:
       PUID: ${PUID}
     network_mode: service:openvpn
     volumes:
-      - ./sonarr/config:/config
-      - ./sonarr/downloads:/downloads
-      - ./sonarr/tv:/tv
+      - ${SONARR_CONFIG}:/config
+      - ${SONARR_DOWNLOADS}:/downloads
+      - ${SONARR_TV}:/tv
 
 networks:
   default:
