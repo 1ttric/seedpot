@@ -75,7 +75,7 @@ services:
     volumes:
       - './radarr/config:/config'
       - './radarr/downloads:/downloads'
-      - './radarr/movies:/downloads'
+      - './radarr/movies:/movies'
 
   sonarr:
     image: linuxserver/sonarr
@@ -89,7 +89,7 @@ services:
     volumes:
       - './sonarr/config:/config'
       - './sonarr/downloads:/downloads'
-      - './sonarr/tv:/downloads'
+      - './sonarr/tv:/tv'
 
 networks:
   default:
