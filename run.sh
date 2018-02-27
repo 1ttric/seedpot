@@ -18,14 +18,11 @@ function ensure_compose {
 function ensure_basicauth {
     sudo apt -yqq install apache2-utils
     mkdir -p ./nginx/htpasswd/
-    if [ ! -f ./nginx/htpasswd/.htpasswd_rutorrent ]; then
+    if [ ! -f ./nginx/htpasswd/.htpasswd ]; then
         pprint "Setting up credentials"
         echo -n "New username: "
         read user
-        sudo htpasswd -c ./nginx/htpasswd/.htpasswd_rutorrent $user
-        sudo cp ./nginx/htpasswd/.htpasswd_rutorrent ./nginx/htpasswd/.htpasswd_jackett
-        sudo cp ./nginx/htpasswd/.htpasswd_rutorrent ./nginx/htpasswd/.htpasswd_sonarr
-        sudo cp ./nginx/htpasswd/.htpasswd_rutorrent ./nginx/htpasswd/.htpasswd_radarr
+        sudo htpasswd -c ./nginx/htpasswd/.htpasswd $user
     fi
 }
 
