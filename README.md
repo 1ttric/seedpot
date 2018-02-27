@@ -20,6 +20,8 @@ Any paths in these configs (crl-verify, auth-user-pass, etc) should refer to `/v
 
 Only one .ovpn config should be included, as the container will attempt to negotiate a connection with each config it finds
 
+Seedpot ships with an example PIA config
+
 ## running
 
 `./run.sh` - it's that simple.
