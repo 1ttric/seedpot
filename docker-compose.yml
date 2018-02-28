@@ -3,6 +3,11 @@ services:
 
   nginx:
     image: nginx
+    depends_on:
+      - rutorrent
+      - jackett
+      - radarr
+      - sonarr
     ports:
       - 80:80
       - 7878:7878
