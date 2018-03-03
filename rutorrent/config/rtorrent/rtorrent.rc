@@ -28,7 +28,7 @@ throttle.max_peers.seed.set = 1024
 pieces.hash.on_completion.set = yes
 
 # default directory to save the downloaded torrents
-directory.default.set = /downloads/incomplete
+directory.default.set = /downloads/incoming
  
 # default session directory. make sure you don"t run multiple instances 
 # of rtorrent using the same session directory 
@@ -85,7 +85,7 @@ protocol.pex.set = yes
 # stop, close or remove the torrents that are tied to filenames that have been deleted 
  
 # watch a directory for new torrents, and stop those that have been deleted
-schedule = watch_directory,  5, 5, load.start=/downloads/watch/*.torrent
+schedule = watch_directory,  5, 5, load.start=/downloads/watched/*.torrent
 schedule = untied_directory, 5, 5, stop_untied=
  
 # close torrents when diskspace is low. */ 
@@ -104,7 +104,7 @@ schedule = low_diskspace, 5, 60, close_low_diskspace=20M
  
 # when the torrent finishes, it executes "mv -n <base_path> /home/$NEWUSER1/Download/" 
 # and then sets the destination directory to "/home/$NEWUSER1/Download/". (0.7.7+)
-method.set_key = event.download.finished, move_complete, "execute2=mv,-u,$d.base_path=,/downloads/complete/;d.directory.set=/downloads/complete/"
+method.set_key = event.download.finished, move_complete, "execute2=mv,-u,$d.base_path=,/downloads/completed/;d.directory.set=/downloads/completed/"
 
 # network.scgi.open_port = 127.0.0.1:51102 
 # scgi_port = 127.0.0.1:51102 

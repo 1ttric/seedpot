@@ -55,9 +55,9 @@ services:
     network_mode: service:openvpn
     volumes:
       - ${RUTORRENT_CONFIG}:/config
-      - ${RUTORRENT_DOWNLOADS_COMPLETE}:/downloads/complete
-      - ${RUTORRENT_DOWNLOADS_INCOMPLETE}:/downloads/incomplete
-      - ${RUTORRENT_DOWNLOADS_WATCH}:/downloads/watch
+      - ${RUTORRENT_DOWNLOADS_COMPLETE}:/downloads/completed
+      - ${RUTORRENT_DOWNLOADS_INCOMPLETE}:/downloads/incoming
+      - ${RUTORRENT_DOWNLOADS_WATCH}:/downloads/watched
     restart: always
 
   jackett:
