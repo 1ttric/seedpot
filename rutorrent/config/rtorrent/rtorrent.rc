@@ -102,9 +102,11 @@ schedule = low_diskspace, 5, 60, close_low_diskspace=20M
 # this is meant for use with schedule, though ensure that the start is non-zero 
 # the loaded file will be tied to the filename provided. 
  
-# when the torrent finishes, it executes "mv -n <base_path> /home/$NEWUSER1/Download/" 
-# and then sets the destination directory to "/home/$NEWUSER1/Download/". (0.7.7+)
-method.set_key = event.download.finished, move_complete, "execute2=mv,-u,$d.base_path=,/downloads/completed/;d.directory.set=/downloads/completed/"
+# when the torrent finishes, it is moved to the download folder and flushes the torrent's state
+method.insert = d.get_finished_dir, simple, "cat=/downloads/completed/,$d.custom1="
+method.insert = d.get_data_full_path, simple, "branch=((d.is_multi_file)),((cat,(d.directory))),((cat,(d.directory),/,(d.name)))"
+method.insert = d.move_to_complete, simple, "d.directory.set=$argument.1=; execute=mkdir,-p,$argument.1=; execute=mv,-u,$argument.0=,$argument.1=; d.save_full_session="
+method.set_key = event.download.finished,move_complete,"d.move_to_complete=$d.get_data_full_path=,$d.get_finished_dir="
 
 # network.scgi.open_port = 127.0.0.1:51102 
 # scgi_port = 127.0.0.1:51102 
