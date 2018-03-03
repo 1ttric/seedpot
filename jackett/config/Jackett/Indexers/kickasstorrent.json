@@ -1,0 +1,26 @@
+[
+  {
+    "id": "sitelink",
+    "type": "inputstring",
+    "name": "Site Link",
+    "value": "https://katcr.co/"
+  },
+  {
+    "id": "cookieheader",
+    "type": "hiddendata",
+    "name": "CookieHeader",
+    "value": "visid_incap_1549972=OPuk/22GQVmnEit5kx72AvrtmloAAAAAQUIPAAAAAADAHI8jwg6WS+kH2u9AqnXM; incap_ses_368_1549972=y1sJEvm49yUDxVvPL2YbBfrtmloAAAAAYQakXAmDLdy+gEHqfNYI6A==; incap_ses_454_1549972=r+4XATxG5zj+8s0Rge9MBnjumloAAAAAy5oN4Nie8ozXqHqjdVPb1g==; incap_ses_151_1549972=7TG+RewWhV1gs9L1xXYYAiXxmloAAAAAv7QQ6zyThIUMllM2WMaviA=="
+  },
+  {
+    "id": "lasterror",
+    "type": "hiddendata",
+    "name": "LastError",
+    "value": ""
+  },
+  {
+    "id": "cookie",
+    "type": "inputstring",
+    "name": "Cookie",
+    "value": null
+  }
+]
