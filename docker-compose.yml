@@ -2,7 +2,10 @@ version: '3.4'
 services:
 
   nginx:
-    image: nginx:alpine
+    image: nginx
+    build:
+      context: ./dockerfiles
+      dockerfile: nginx.dockerfile
     depends_on:
       - rutorrent
       - jackett
@@ -75,9 +78,10 @@ services:
     restart: always
 
   radarr:
-    image: linuxserver/radarr
-    depends_on:
-      - openvpn
+    image: radarr
+    build:
+      context: ./dockerfiles
+      dockerfile: radarr.dockerfile
     environment:
       TZ: ${TZ}
       PGID: ${PGID}
@@ -90,9 +94,13 @@ services:
     restart: always
 
   sonarr:
-    image: linuxserver/sonarr
+    image: sonarr
+    build:
+      context: ./dockerfiles
+      dockerfile: sonarr.dockerfile
     depends_on:
-      - openvpn
+      - rutorrent
+      - jackett
     environment:
       TZ: ${TZ}
       PGID: ${PGID}
