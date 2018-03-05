@@ -6,6 +6,9 @@ services:
     build:
       context: ./dockerfiles
       dockerfile: nginx.dockerfile
+    environment:
+      HTTP_USER: ${HTTP_USER}
+      HTTP_PASSWORD: ${HTTP_PASSWORD}
     depends_on:
       - rutorrent
       - jackett
@@ -20,7 +23,6 @@ services:
       - default
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./nginx/htpasswd:/htpasswd
     restart: always
 
   openvpn:
