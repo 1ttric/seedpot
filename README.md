@@ -22,6 +22,8 @@ Only one .ovpn config should be included, as the container will attempt to negot
 
 An example PrivateInternetAccess config is included, with dummy credentials.
 
+A note: In order to make Docker - and thus seedpot - work behind an openvpn client, please refer to [this](https://stackoverflow.com/questions/45692255/how-make-openvpn-work-with-docker) stackexchange post for instructions on modifying your IP routes
+
 ## running
 
 `./run.sh` - it's that simple.
