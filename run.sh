@@ -20,4 +20,4 @@ ensure_compose
 pprint "Stopping current instance, if it exists"
 sudo docker-compose down -t 0 --remove-orphans
 pprint "Starting new instance"
-sudo docker-compose up -d
+sudo docker-compose up -d --build
